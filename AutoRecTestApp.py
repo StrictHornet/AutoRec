@@ -4,6 +4,14 @@ import tkinter as tk
 window = tk.Tk()
 window.title("Address Entry Form")
 
+
+def handle_keypress(event):
+    """Print the character associated to the key pressed"""
+    print(event.char)
+
+# Bind keypress event to handle_keypress()
+window.bind("<Key>", handle_keypress)
+
 # Create a new frame `frm_form` to contain the Label
 # and Entry widgets for entering address information.
 frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)

@@ -6,7 +6,10 @@ from openpyxl import load_workbook
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
 # GUI
-#DUplicate result IR
+# DUPLICATE RESULT IR
+# CONVERT ALPHABET TO NUMBER
+# DESIGN ERROR TEXT FIELD
+# PRINT ERRORS TO TEXT FIELD
 
 #
 
@@ -78,10 +81,10 @@ lbl_greeting.pack(fill=tk.X)
 frm_body = tk.Frame()
 frm_body.pack(padx=15, pady=15)
 
-lbl_val1 = tk.Label(text = "inq. Approval Column Aplhabet Identifier", master = frm_body)
+lbl_val1 = tk.Label(text = "inq. Approval Column Alphabet Identifier", master = frm_body)
 lbl_val1.grid(row=0, column=0)
 
-lbl_val2 = tk.Label(text = "inq. Comment Column Aplhabet Identifier", master = frm_body)
+lbl_val2 = tk.Label(text = "inq. Comment Column Alphabet Identifier", master = frm_body)
 lbl_val2.grid(row=1, column=0)
 
 ent1 = tk.Entry(master = frm_body, width = 5)

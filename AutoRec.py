@@ -72,8 +72,6 @@ win.title("AutoRec")
 frm_head = tk.Frame(bg="yellow")
 frm_head.pack(fill=tk.X)
 
-frm_directory = tk.Frame(padx = 10,pady = 10)
-
 lbl_greeting = tk.Label(relief=tk.RIDGE, height=2, bg="#641822",text="Inq SLA Monthly Reconciler",
                             master=frm_head)
 lbl_greeting.pack(fill=tk.X)
@@ -81,26 +79,25 @@ lbl_greeting.pack(fill=tk.X)
 frm_body = tk.Frame()
 frm_body.pack(padx=15, pady=15)
 
-lbl_val1 = tk.Label(text = "inq. Approval Column Alphabet Identifier", master = frm_body)
-lbl_val1.grid(row=0, column=0)
+lbl_approvalColumn = tk.Label(text = "inq. Approval Column Alphabet Identifier", master = frm_body)
+lbl_approvalColumn.grid(row=0, column=0)
+ent_approvalColumn = tk.Entry(master = frm_body, width = 5)
+approvalColumn = ent_approvalColumn.get()
+ent_approvalColumn.grid(row=0, column=1)
 
-lbl_val2 = tk.Label(text = "inq. Comment Column Alphabet Identifier", master = frm_body)
-lbl_val2.grid(row=1, column=0)
+lbl_commentColumn = tk.Label(text = "inq. Comment Column Alphabet Identifier", master = frm_body)
+lbl_commentColumn.grid(row=1, column=0)
+ent_commentColumn = tk.Entry(master = frm_body, width = 5)
+commentColumn = ent_commentColumn.get()
+ent_commentColumn.grid(row=1, column=1)
 
-ent1 = tk.Entry(master = frm_body, width = 5)
-ir21 = ent1.get()
-
-ent2 = tk.Entry(master = frm_body, width = 5)
-ir22 = ent2.get()
-
-ent1.grid(row=0, column=1)
-ent2.grid(row=1, column=1)
+frm_directory = tk.Frame(padx = 10,pady = 10)
 
 lbl_directory = tk.Label(master = frm_directory, width=35, bg="gray", padx=10, text="DIRECTORY PATH")
 lbl_directory.pack()
 
-directory_ent = tk.Entry(master=frm_directory, width=55)
 file_directory = "C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx"
+directory_ent = tk.Entry(master=frm_directory, width=55)
 directory_ent.insert(0, file_directory)
 file_directory = directory_ent.get()
 directory_ent.pack()

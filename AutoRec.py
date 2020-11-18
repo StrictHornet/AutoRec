@@ -15,7 +15,7 @@ from openpyxl import load_workbook
 
 # #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():
-    print("")
+    print("clicked")
 #     workbook = load_workbook(
 #     filename="C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx")
 

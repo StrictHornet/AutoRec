@@ -5,8 +5,8 @@ from openpyxl import load_workbook
 ############# TASKS ###################
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
-## GUI
-# DESIGN ERROR TEXT FIELD
+## DESIGN ERROR TEXT FIELD
+## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
 # PRINT ERRORS TO TEXT FIELD
 # "COMPLETED RECONCILIATION" TEXTFIELD
 
@@ -58,7 +58,7 @@ win.title("AutoRec")
 frm_head = tk.Frame(bg="yellow")
 frm_head.pack(fill=tk.X)
 
-lbl_greeting = tk.Label(relief=tk.RIDGE, height=2, bg="#641822",text="Inq SLA Monthly Reconciler",
+lbl_greeting = tk.Label(relief=tk.RIDGE, height=2, bg="#641822",text="Inq SLA Monthly Reconciler", fg="white",
                             master=frm_head)
 lbl_greeting.pack(fill=tk.X)
 
@@ -68,7 +68,7 @@ frm_body.pack(padx=15, pady=15)
 approvalColumn = "X"
 lbl_approvalColumn = tk.Label(text = "inq. Approval Column Alphabet Identifier", master = frm_body)
 lbl_approvalColumn.grid(row=0, column=0)
-ent_approvalColumn = tk.Entry(master = frm_body, width = 5)
+ent_approvalColumn = tk.Entry(master = frm_body, width = 2)
 ent_approvalColumn.insert(0, approvalColumn)
 approvalColumn = ent_approvalColumn.get()
 ent_approvalColumn.grid(row=0, column=1)
@@ -76,7 +76,7 @@ ent_approvalColumn.grid(row=0, column=1)
 commentColumn = "Y"
 lbl_commentColumn = tk.Label(text = "inq. Comment Column Alphabet Identifier", master = frm_body)
 lbl_commentColumn.grid(row=1, column=0)
-ent_commentColumn = tk.Entry(master = frm_body, width = 5)
+ent_commentColumn = tk.Entry(master = frm_body, width = 2)
 ent_commentColumn.insert(0, commentColumn)
 commentColumn = ent_commentColumn.get()
 ent_commentColumn.grid(row=1, column=1)

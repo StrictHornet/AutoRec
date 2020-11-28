@@ -12,6 +12,17 @@ from openpyxl import load_workbook
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():
+    frm_status = tk.Frame(padx = 10,pady = 10)
+
+    lbl_status = tk.Label(master = frm_status, width=35, bg="white", padx=10, text="STATUS REPORT")
+    lbl_status.pack(fill=tk.X)
+
+    txt_status = tk.Text(master=frm_status, width=55)
+    txt_status.pack()
+
+    frm_status.pack()
+
+    errorCode = ""
     app = (ord(approvalColumn.lower()) - 96) - 3 #3 is the distance between the beginning of the ir that starts from the third column plus the one unit diffrence in the ir[] array
     com = (ord(commentColumn.lower()) - 96) - 3
     workbook = load_workbook(
@@ -30,7 +41,8 @@ def reconcile():
                         else:
                             ir[app].value = "OK"
                 except:
-                    print("Didn't work!")
+                    errorCode = "Didn't work!"
+                    txt_status.insert(tk.END, f"\n{errorCode}")
             else:
                 continue
             break  # Break the outer loop
@@ -96,5 +108,7 @@ frm_directory.pack()
 
 btn_reconcile = tk.Button(text="Reconcile", bg="#a00008", width=15, height=3, command=reconcile)
 btn_reconcile.pack(pady=5)
+
+
 
 win.mainloop()

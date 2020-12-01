@@ -109,6 +109,4 @@ frm_directory.pack()
 btn_reconcile = tk.Button(text="Reconcile", bg="#a00008", width=15, height=3, command=reconcile)
 btn_reconcile.pack(pady=5)
 
-
-
 win.mainloop()

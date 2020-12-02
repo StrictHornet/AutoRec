@@ -11,6 +11,7 @@ from openpyxl import load_workbook
 # "COMPLETED RECONCILIATION" TEXTFIELD
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
+
 def reconcile():
     frm_status = tk.Frame(padx = 10,pady = 10)
 
@@ -26,7 +27,7 @@ def reconcile():
     app = (ord(approvalColumn.lower()) - 96) - 3 #3 is the distance between the beginning of the ir that starts from the third column plus the one unit diffrence in the ir[] array
     com = (ord(commentColumn.lower()) - 96) - 3
     workbook = load_workbook(
-    filename="C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx")
+    filename=file_directory)
 
 # For loop for search and cell assignment
     for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
@@ -43,6 +44,7 @@ def reconcile():
                 except:
                     errorCode = "Didn't work!"
                     txt_status.insert(tk.END, f"\n{errorCode}")
+                    break
             else:
                 continue
             break  # Break the outer loop

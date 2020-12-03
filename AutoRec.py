@@ -13,6 +13,8 @@ from openpyxl import load_workbook
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 
 def reconcile():
+    
+    file_directory = ent_directory.get()
     frm_status = tk.Frame(padx = 10,pady = 10)
 
     lbl_status = tk.Label(master = frm_status, width=35, bg="white", padx=10, text="STATUS REPORT")
@@ -103,7 +105,6 @@ lbl_directory.pack()
 file_directory = "C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx"
 ent_directory = tk.Entry(master=frm_directory, width=55)
 ent_directory.insert(0, file_directory)
-file_directory = ent_directory.get()
 ent_directory.pack()
 
 frm_directory.pack()

@@ -57,7 +57,7 @@ def reconcile():
             for row in sheet.iter_rows(min_row=2, min_col=3):
                 try:
                     if ir[0].value == row[0].value:
-                        if row[app].value != "":
+                        if row[app].value == "Approved":
                             ir[app].value = "DUPLICATE" 
                             break  # Since IR has been found loop should break to next IR
                 except:
@@ -65,8 +65,7 @@ def reconcile():
             else:
                 continue
             break  # Break the outer loop
-    workbook.save(
-        filename="C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx")
+    workbook.save(filename=file_directory)
 
 win = tk.Tk()
 win.title("AutoRec")

@@ -11,7 +11,6 @@ from openpyxl import load_workbook
 # "COMPLETED RECONCILIATION" TEXTFIELD
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
-
 def reconcile():
     
     file_directory = ent_directory.get()

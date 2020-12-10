@@ -34,6 +34,8 @@ def reconcile():
     for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
         for sheet in workbook:
             for row in sheet.iter_rows(min_row=2, min_col=8):
+                if ir[0].value is None:
+                    break
                 try:
                     if ir[0].value == row[0].value:
                         if row[6].value != "NIL":

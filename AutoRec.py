@@ -16,7 +16,11 @@ def reconcile():
     file_directory = ent_directory.get()
     frm_status = tk.Frame(padx = 10,pady = 10)
 
-    lbl_status = tk.Label(master = frm_status, width=35, bg="white", padx=10, text="STATUS REPORT")
+    lbl_status = tk.Label(master = frm_status, 
+                                            width=35, 
+                                            bg="white", 
+                                            padx=10, 
+                                            text="STATUS REPORT")
     lbl_status.pack(fill=tk.X)
 
     txt_status = tk.Text(master=frm_status, width=55)
@@ -74,8 +78,12 @@ win.title("AutoRec")
 frm_head = tk.Frame(bg="yellow")
 frm_head.pack(fill=tk.X)
 
-lbl_greeting = tk.Label(relief=tk.RIDGE, height=2, bg="#641822",text="Inq SLA Monthly Reconciler", fg="white",
-                            master=frm_head)
+lbl_greeting = tk.Label(relief=tk.RIDGE, 
+                                    height=2, 
+                                    bg="#641822",
+                                    text="Inq SLA Monthly Reconciler", 
+                                    fg="white",
+                                    master=frm_head)
 lbl_greeting.pack(fill=tk.X)
 
 frm_body = tk.Frame()
@@ -99,7 +107,11 @@ ent_commentColumn.grid(row=1, column=1)
 
 frm_directory = tk.Frame(padx = 10,pady = 10)
 
-lbl_directory = tk.Label(master = frm_directory, width=35, bg="gray", padx=10, text="DIRECTORY PATH")
+lbl_directory = tk.Label(master = frm_directory, 
+                                            width=35, 
+                                            bg="gray", 
+                                            padx=10, 
+                                            text="DIRECTORY PATH")
 lbl_directory.pack()
 
 file_directory = "C:/Users/okosu/Google Drive/Work/VODACOM MAIN COPY OF SURVEY SPREADSHEET.xlsx"

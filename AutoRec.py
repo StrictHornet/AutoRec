@@ -29,8 +29,10 @@ def reconcile():
     frm_status.pack()
 
     errorCode = ""
-    app = (ord(approvalColumn.lower()) - 96) - 3 #3 is the distance between the beginning of the ir that starts from the third column plus the one unit diffrence in the ir[] array
+    app = (ord(approvalColumn.lower()) - 96) - 3
     com = (ord(commentColumn.lower()) - 96) - 3
+    #The subtracted 3 is the distance between the beginning of the ir that
+    #starts from the third column plus the one unit diffrence in the ir[] array
     workbook = load_workbook(
     filename=file_directory)
 

@@ -5,6 +5,7 @@ from openpyxl import load_workbook
 ############# TASKS ###################
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
+###merged cells slowing app
 ## DESIGN ERROR TEXT FIELD
 ## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
 # PRINT ERRORS TO TEXT FIELD
@@ -28,7 +29,7 @@ def reconcile():
 
     frm_status.pack()
 
-    errorCode = ""
+    errorCode = "Didn't work"
     app = (ord(approvalColumn.lower()) - 96) - 3
     com = (ord(commentColumn.lower()) - 96) - 3
     #The subtracted 3 is the distance between the beginning of the ir that
@@ -38,10 +39,10 @@ def reconcile():
 
 # For loop for search and cell assignment
     for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
+        if ir[0].value is None:
+                    continue
         for sheet in workbook:
             for row in sheet.iter_rows(min_row=2, min_col=8):
-                if ir[0].value is None:
-                    break
                 try:
                     if ir[0].value == row[0].value:
                         if row[6].value != "NIL":

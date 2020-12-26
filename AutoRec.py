@@ -10,10 +10,11 @@ from openpyxl import load_workbook
 ## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
 # PRINT ERRORS TO TEXT FIELD
 # "COMPLETED RECONCILIATION" TEXTFIELD
+# FUNCTION THAT CONTROLS STATUS REPORT
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
+
 def reconcile():
-    
     file_directory = ent_directory.get()
     frm_status = tk.Frame(padx = 10,pady = 10)
 
@@ -34,8 +35,7 @@ def reconcile():
     com = (ord(commentColumn.lower()) - 96) - 3
     #The subtracted 3 is the distance between the beginning of the ir that
     #starts from the third column plus the one unit diffrence in the ir[] array
-    workbook = load_workbook(
-    filename=file_directory)
+    workbook = load_workbook(filename=file_directory)
 
 # For loop for search and cell assignment
     for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
@@ -52,8 +52,8 @@ def reconcile():
                         else:
                             ir[app].value = "OK"
                 except:
-                    errorCode = "Didn't work!"
-                    txt_status.insert(tk.END, f"\n{errorCode}")
+                    # errorCode = "Didn't work!"
+                    # txt_status.insert(tk.END, f"\n{errorCode}")
                     break
             else:
                 continue
@@ -73,8 +73,10 @@ def reconcile():
             else:
                 continue
             break  # Break the outer loop
+    txt_status.insert(tk.END, "COMPLETED")
     workbook.save(filename=file_directory)
 
+#TKINTER 
 win = tk.Tk()
 win.title("AutoRec")
 

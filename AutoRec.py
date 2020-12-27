@@ -3,9 +3,15 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 
 ############# TASKS ###################
+'''
+Optimising application options
+1. Make reconciliation sheet for each year its own thing
+2. Use excel inbuilt search function to search fro each element 
+3. Intuitively reduce number of iterations
+4. Combine duplicate loop with rconcile loop
+'''
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
-###merged cells slowing app
 ## DESIGN ERROR TEXT FIELD
 ## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
 # PRINT ERRORS TO TEXT FIELD
@@ -51,28 +57,29 @@ def reconcile():
                             break  # Since IR has been found loop should break to next IR
                         else:
                             ir[app].value = "OK"
+                            break
                 except:
                     # errorCode = "Didn't work!"
                     # txt_status.insert(tk.END, f"\n{errorCode}")
                     break
-            else:
-                continue
+            # else:
+            #     continue
             break  # Break the outer loop
 
 # For loop for duplicate search
-    for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
-        for sheet in workbook:
-            for row in sheet.iter_rows(min_row=2, min_col=3):
-                try:
-                    if ir[0].value == row[0].value:
-                        if row[app].value == "Approved":
-                            ir[app].value = "DUPLICATE" 
-                            break  # Since IR has been found loop should break to next IR
-                except:
-                    print("Didn't work!")
-            else:
-                continue
-            break  # Break the outer loop
+    # for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
+    #     for sheet in workbook:
+    #         for row in sheet.iter_rows(min_row=2, min_col=3):
+    #             try:
+    #                 if ir[0].value == row[0].value:
+    #                     if row[app].value == "Approved":
+    #                         ir[app].value = "DUPLICATE" 
+    #                         break  # Since IR has been found loop should break to next IR
+    #             except:
+    #                 print("Didn't work!")
+    #         else:
+    #             continue
+    #         break  # Break the outer loop
     txt_status.insert(tk.END, "COMPLETED")
     workbook.save(filename=file_directory)
 

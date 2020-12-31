@@ -2,24 +2,6 @@ import tkinter as tk
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-############# TASKS ###################
-'''
-Optimising application options
-1. Make reconciliation sheet for each year its own thing
-2. Use excel inbuilt search function to search fro each element 
-3. Intuitively reduce number of iterations
-4. Combine duplicate loop with rconcile loop
-'''
-# PUTTING EVERYTHING IN ONE CONSTANT FILE
-# CREATE NEW FILE, COPY REC FILE, REC
-## DESIGN ERROR TEXT FIELD
-## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
-# PRINT ERRORS TO TEXT FIELD
-# "COMPLETED RECONCILIATION" TEXTFIELD
-# FUNCTION THAT CONTROLS STATUS REPORT
-
-#FUNCTION THAT RECONCILES SURVEY DOCUMENT#
-
 def reconcile():
     file_directory = ent_directory.get()
     frm_status = tk.Frame(padx = 10,pady = 10)
@@ -30,58 +12,69 @@ def reconcile():
                                             padx=10, 
                                             text="STATUS REPORT")
     lbl_status.pack(fill=tk.X)
-
-    txt_status = tk.Text(master=frm_status, width=55)
+    txt_status = tk.Text(master=frm_status, width=55, height=5)
     txt_status.pack()
-
     frm_status.pack()
 
-    errorCode = "Didn't work"
-    app = (ord(approvalColumn.lower()) - 96) - 3
-    com = (ord(commentColumn.lower()) - 96) - 3
-    #The subtracted 3 is the distance between the beginning of the ir that
-    #starts from the third column plus the one unit diffrence in the ir[] array
-    workbook = load_workbook(filename=file_directory)
+    #Try-Catch any Application error
+    try:
+        errorCode = "Reconciliation didn't work"
+        app = (ord(approvalColumn.lower()) - 96) - 3
+        com = (ord(commentColumn.lower()) - 96) - 3
+        #The subtracted 3 is the distance between the beginning of the ir that
+        #starts from the third column plus the one unit diffrence in the ir[] array
+        workbook = load_workbook(filename=file_directory)
 
-# For loop for search and cell assignment
-    for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
-        if ir[0].value is None:
+    # For-Loop for search and cell assignment
+        for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
+            if ir[0].value is None:
+                        continue
+            for sheet in workbook:
+                for row in sheet.iter_rows(min_row=2, min_col=8):
+                    try:
+                        if ir[0].value == row[0].value:
+                            if row[6].value != "NIL":
+                                ir[app].value = "Failed" 
+                                ir[com].value = row[6].value
+                                break  # Since IR has been found loop should break
+                            else:
+                                ir[app].value = "OK"
+                                break
+                    except:
+                        txt_status.insert(tk.END, f"\n{errorCode}")
+                        break
+                else:
                     continue
-        for sheet in workbook:
-            for row in sheet.iter_rows(min_row=2, min_col=8):
-                try:
-                    if ir[0].value == row[0].value:
-                        if row[6].value != "NIL":
-                            ir[app].value = "Failed" 
-                            ir[com].value = row[6].value 
-                            break  # Since IR has been found loop should break to next IR
-                        else:
-                            ir[app].value = "OK"
-                            break
-                except:
-                    # errorCode = "Didn't work!"
-                    # txt_status.insert(tk.END, f"\n{errorCode}")
-                    break
-            # else:
-            #     continue
-            break  # Break the outer loop
+                break  # Break into next IR
 
-# For loop for duplicate search
-    # for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
-    #     for sheet in workbook:
-    #         for row in sheet.iter_rows(min_row=2, min_col=3):
-    #             try:
-    #                 if ir[0].value == row[0].value:
-    #                     if row[app].value == "Approved":
-    #                         ir[app].value = "DUPLICATE" 
-    #                         break  # Since IR has been found loop should break to next IR
-    #             except:
-    #                 print("Didn't work!")
-    #         else:
-    #             continue
-    #         break  # Break the outer loop
-    txt_status.insert(tk.END, "COMPLETED")
-    workbook.save(filename=file_directory)
+    # For loop for duplicate search
+        for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
+            if ir[0].value is None:
+                        continue
+            for sheet in workbook:
+                for row in sheet.iter_rows(min_row=2, min_col=3):
+                    try:
+                        if ir[0].value == row[0].value:
+                            if row[app].value == "Approved":
+                                ir[app].value = "DUPLICATE" 
+                                ir[com].value = ""
+                                break  # Since IR has been found loop should break to next IR
+                            else:
+                                break
+                    except:
+                        txt_status.insert(tk.END, f"\n{errorCode}")
+                        break
+                else:
+                    continue
+                break  # Break the outer loop
+
+        txt_status.insert(tk.END, "COMPLETED")
+        workbook.save(filename=file_directory)
+        
+    except Exception as error:
+        error_string = str(error)
+        txt_status.insert(tk.END, f"\n{error_string}")
+        txt_status.insert(tk.END, f"\nScreenshot and send to okosunprincewill@gmail.com")
 
 #TKINTER 
 win = tk.Tk()

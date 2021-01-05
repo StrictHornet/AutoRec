@@ -21,7 +21,7 @@ Optimising application options
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():
     file_directory = ent_directory.get()
-    frm_status = tk.Frame(padx = 10,pady = 10)
+    frm_status = tk.Frame(padx=10,pady=10)
 
     lbl_status = tk.Label(master = frm_status, 
                                             width=35, 

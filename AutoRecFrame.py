@@ -5,10 +5,9 @@ from openpyxl import load_workbook
 ############# TASKS ###################
 '''
 Optimising application options
-1. Make reconciliation sheet for each year its own thing
-2. Use excel inbuilt search function to search fro each element 
-3. Intuitively reduce number of iterations
-4. put duplicate loop before rconcile loop
+1. Intuitively reduce number of iterations
+2. put duplicate loop before rconcile loop // try to combine duplicate and reconcile loop
+3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
 '''
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC

@@ -9,13 +9,12 @@ Optimising application options
 2. put duplicate loop before rconcile loop // try to combine duplicate and reconcile loop
 3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
 '''
+'''
+Other tasks
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
-## DESIGN ERROR TEXT FIELD
-## DESIGN FUNCTION THAT PRINTS ERROR TO TEXT FIELD
-# PRINT ERRORS TO TEXT FIELD
-# "COMPLETED RECONCILIATION" TEXTFIELD
 # FUNCTION THAT CONTROLS STATUS REPORT
+'''
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():

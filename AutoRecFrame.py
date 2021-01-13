@@ -8,8 +8,7 @@ Optimising application options
 1. Intuitively reduce number of iterations
 2. put duplicate loop before rconcile loop // try to combine duplicate and reconcile loop
 3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
-'''
-'''
+********************************************
 Other tasks
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
@@ -18,6 +17,8 @@ Other tasks
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():
+
+    #Tkinter Framework for Status Tab#
     file_directory = ent_directory.get()
     frm_status = tk.Frame(padx=10,pady=10)
 
@@ -36,11 +37,14 @@ def reconcile():
         errorCode = "Reconciliation didn't work"
         app = (ord(approvalColumn.lower()) - 96) - 3
         com = (ord(commentColumn.lower()) - 96) - 3
-        #The subtracted 3 is the distance between the beginning of the ir that
-        #starts from the third column plus the one unit diffrence in the ir[] array
+        '''
+        The subtracted 3 is the distance between the beginning of the ir 
+        that starts from the third column plus the one unit diffrence in 
+        the ir[] array
+        '''
         workbook = load_workbook(filename=file_directory)
 
-    # For-Loop for search and cell assignment
+        #For-Loop for search and cell assignment
         for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
             if ir[0].value is None:
                         continue
@@ -62,23 +66,19 @@ def reconcile():
                     continue
                 break  # Break into next IR
 
-    # For loop for duplicate search
+        #For loop for duplicate search
         for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
             if ir[0].value is None:
                         continue
             for sheet in workbook:
                 for row in sheet.iter_rows(min_row=2, min_col=3):
-                    try:
-                        if ir[0].value == row[0].value:
-                            if row[app].value == "Approved":
-                                ir[app].value = "DUPLICATE" 
-                                ir[com].value = ""
-                                break  # Since IR has been found loop should break to next IR
-                            else:
-                                break
-                    except:
-                        txt_status.insert(tk.END, f"\n{errorCode}")
-                        break
+                    if ir[0].value == row[0].value:
+                        if row[app].value == "Approved":
+                            ir[app].value = "DUPLICATE" 
+                            ir[com].value = ""
+                            break  # Since IR has been found loop should break to next IR
+                        else:
+                            break
                 else:
                     continue
                 break  # Break the outer loop
@@ -91,11 +91,11 @@ def reconcile():
         txt_status.insert(tk.END, f"\n{error_string}")
         txt_status.insert(tk.END, f"\nScreenshot and send to okosunprincewill@gmail.com")
 
-#TKINTER 
+#TKINTER#
 win = tk.Tk()
 win.title("AutoRec")
 
-frm_head = tk.Frame(bg="yellow")
+frm_head = tk.Frame()
 frm_head.pack(fill=tk.X)
 
 lbl_greeting = tk.Label(relief=tk.RIDGE, 

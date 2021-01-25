@@ -2,7 +2,7 @@ import tkinter as tk
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
-############# TASKS ###################
+############# TASKS ##################
 '''
 Optimising application options
 1. Intuitively reduce number of iterations

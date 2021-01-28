@@ -3,6 +3,7 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 
 ############# TASKS ##################
+#3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed#
 '''
 Optimising application options
 1. Intuitively reduce number of iterations

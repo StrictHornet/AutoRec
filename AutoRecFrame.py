@@ -14,6 +14,7 @@ Other tasks
 # PUTTING EVERYTHING IN ONE CONSTANT FILE
 # CREATE NEW FILE, COPY REC FILE, REC
 # FUNCTION THAT CONTROLS STATUS REPORT
+# CREATE PROMPT TO ASK FOR DUPLICATE SEARCH *add it takes longer to process*
 '''
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
@@ -83,7 +84,8 @@ def reconcile():
                 else:
                     continue
                 break  # Break the outer loop
-
+        
+        duplicateSearch(workbook, app, com)
         txt_status.insert(tk.END, "COMPLETED")
         workbook.save(filename=file_directory)
         
@@ -91,6 +93,24 @@ def reconcile():
         error_string = str(error)
         txt_status.insert(tk.END, f"\n{error_string}")
         txt_status.insert(tk.END, f"\nScreenshot and send to okosunprincewill@gmail.com")
+
+#FUNCTION THAT SEARCHES FOR DUPLICATES#
+def duplicateSearch(workbook, app, com):
+    for ir in workbook["RecNew"].iter_rows(min_row=2, min_col=3):
+        if ir[0].value is None:
+                    continue
+        for sheet in workbook:
+            for row in sheet.iter_rows(min_row=2, min_col=3):
+                if ir[0].value == row[0].value:
+                    if row[app].value == "Approved":
+                        ir[app].value = "DUPLICATE" 
+                        ir[com].value = ""
+                        break  # Since IR has been found loop should break to next IR
+                    else:
+                        pass
+            else:
+                continue
+            break  # Break the outer loop
 
 #TKINTER#
 win = tk.Tk()

@@ -60,7 +60,7 @@ def reconcile():
                                 ir[com].value = ""
                                 break  # Since IR has been found loop should break to next IR
                             else:
-                                break
+                                pass
                     except:
                         txt_status.insert(tk.END, f"\n{errorCode}")
                         break

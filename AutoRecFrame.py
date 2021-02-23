@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import IntVar
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
@@ -85,7 +86,8 @@ def reconcile():
                     continue
                 break  # Break the outer loop
         
-        duplicateSearch(workbook, app, com)
+        if check_state.get() == 1:
+            duplicateSearch(workbook, app, com)
         txt_status.insert(tk.END, "COMPLETED")
         workbook.save(filename=file_directory)
         
@@ -164,5 +166,8 @@ frm_directory.pack()
 
 btn_reconcile = tk.Button(text="Reconcile", bg="#a00008", width=15, height=3, command=reconcile)
 btn_reconcile.pack(pady=5)
+check_state = IntVar()
+check_duplicate = tk.Checkbutton(text = "Select to identify duplicates.", variable = check_state)
+check_duplicate.pack(pady=1)
 
 win.mainloop()

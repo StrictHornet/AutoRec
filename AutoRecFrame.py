@@ -4,9 +4,9 @@ from openpyxl import Workbook
 from openpyxl import load_workbook
 
 ############# TASKS ##################
-#3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed#
 '''
 Optimising application options
+0. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
 1. Intuitively reduce number of iterations
 2. put duplicate loop before rconcile loop // try to combine duplicate and reconcile loop
 3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
@@ -16,6 +16,11 @@ Other tasks
 # CREATE NEW FILE, COPY REC FILE, REC
 # FUNCTION THAT CONTROLS STATUS REPORT
 '''
+############# COMPLETED TASKS ##################
+#CREATE PROMPT TO ASK FOR DUPLICATE SEARCH#
+#DESIGN ERROR TEXT FIELD#
+##
+
 
 #FUNCTION THAT RECONCILES SURVEY DOCUMENT#
 def reconcile():

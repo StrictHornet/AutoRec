@@ -7,6 +7,7 @@ from openpyxl import load_workbook
 '''
 Optimising application options
 0. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
+    0.1 use a variable in the demarction sheet||| check for the variable in reconciliation function|||if variable active break back to surveys
 1. Intuitively reduce number of iterations
 2. put duplicate loop before rconcile loop // try to combine duplicate and reconcile loop
 3. create checkpoint sheet before reconciliation section to enable break once surveys are done being traversed
